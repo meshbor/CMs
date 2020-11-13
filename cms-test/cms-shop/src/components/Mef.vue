@@ -2,60 +2,97 @@
   <div class="test">
     <div class="inside">
       <!-- 1 -->
-    <div class="row">
-      <div width="55px" height="55px">
-      <div class="border-around">
-        <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
+      <div class="row">
+        <div width="55px" height="55px">
+          <div class="border-around">
+            <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
+          </div>
         </div>
-      </div>
-      <div class="column-test">
-        <label class="hugh">HUGH IS</label>
-        <input placeholder="7" type="number" class="input-test input-bold" maxlength="40"/>
-      </div>
-      <p class="hours">hours old</p>
-    </div>
-    <!-- 2 -->
-    <div class="row">
-      <div width="55px" height="55px"> 
-        <div class="border-around">
-        <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
+        <div class="column-test">
+          <label class="hugh">HUGH IS</label>
+          <input
+            placeholder="7"
+            type="number"
+            class="input-test input-bold"
+            maxlength="40"
+          />
         </div>
-      </div>
-      <div class="column-test">
-        <label class="hugh">HUGH IS</label>
-        <input placeholder="10000" value="10000" type="number" class="input-test input-bold" maxlength="40"/>
-      </div>
         <p class="hours">hours old</p>
-    </div>
-    <!-- 3 -->
-    <div class="row" v-bind:class="[flagColor2 ? 'colorClick' : '']">
-      <div width="55px" height="55px"> 
-        <div class="border-around">
-        <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
+      </div>
+      <!-- 2 -->
+      <div class="row">
+        <div width="55px" height="55px">
+          <div class="border-around">
+            <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
+          </div>
         </div>
-      </div>
-      <div class="column-test">
-        <label class="hugh">HUGH IS</label>
-        <input @click="toggle2"  @keypress="inputLarge($event)"  maxlength="20" v-if="flagWidth2"  placeholder="10000" value="10000" type="number" class="input-test input-bold" />
-
-      </div>
-        <p class="hours">hours old</p>
-    </div>
-    <!-- 4 -->
-    <div class="row" v-bind:class="[flagColor ? 'colorClick' : '']" >
-      <div width="55px" height="55px"> 
-        <div class="border-around">
-        <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
+        <div class="column-test">
+          <label class="hugh">HUGH IS</label>
+          <input
+            placeholder="10000"
+            value="10000"
+            type="number"
+            class="input-test input-bold"
+            maxlength="40"
+          />
         </div>
-      </div>
-      <div  class="column-test">
-        <label class="hugh">HUGH IS</label>
-        <input @click="toggle"  @keypress="inputLarge($event)"  maxlength="20" v-if="flagWidth"  placeholder="10000" value="10000" type="number" class="input-test input-bold" />
-        <input @click="toggle"  @keypress="inputLarge($event)" maxlength="20" v-else width="widthIn" placeholder="10000" value="10000" type="number" class="input-test-large input-bold" />
-      
-      </div>
         <p class="hours">hours old</p>
-    </div>
+      </div>
+      <!-- 3 -->
+      <div class="row" v-bind:class="[flagColor2 ? 'colorClick' : '']">
+        <div width="55px" height="55px">
+          <div class="border-around">
+            <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
+          </div>
+        </div>
+        <div class="column-test">
+          <label class="hugh">HUGH IS</label>
+          <input
+            @click="toggle2"
+            @keypress="inputLarge($event)"
+            maxlength="20"
+            v-if="flagWidth2"
+            placeholder="10000"
+            value="10000"
+            type="number"
+            class="input-test input-bold"
+          />
+        </div>
+        <p class="hours">hours old</p>
+      </div>
+      <!-- 4 -->
+      <div class="row" v-bind:class="[flagColor ? 'colorClick' : '']">
+        <div width="55px" height="55px">
+          <div class="border-around">
+            <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
+          </div>
+        </div>
+        <div class="column-test">
+          <label class="hugh">HUGH IS</label>
+          <input
+            @click="toggle"
+            @keypress="inputLarge($event)"
+            maxlength="20"
+            v-if="flagWidth"
+            placeholder="10000"
+            value="10000"
+            type="number"
+            class="input-test input-bold"
+          />
+          <input
+            @click="toggle"
+            @keypress="inputLarge($event)"
+            maxlength="20"
+            v-else
+            width="widthIn"
+            placeholder="10000"
+            value="10000"
+            type="number"
+            class="input-test-large input-bold"
+          />
+        </div>
+        <p class="hours">hours old</p>
+      </div>
     </div>
   </div>
 </template>
@@ -64,36 +101,35 @@ export default {
   name: "Mef",
   data() {
     return {
-      flagWidth:true,
-      flagWidth2:true,
+      flagWidth: true,
+      flagWidth2: true,
       widthIn: null,
       flagColor: false,
       flagColor2: false,
-    }
+    };
   },
   methods: {
-    inputLarge(e){
-      
-      if (e.target.value.length > 5 && e.target.value.length<40 ) {
-        this.widthIn = ((e.target.value.length +5)) +'px';
-        console.log('widthIn',this.widthIn);
-        return this.flagWidth = false
+    inputLarge(e) {
+      if (e.target.value.length > 5 && e.target.value.length < 40) {
+        this.widthIn = e.target.value.length + 5 + "px";
+        console.log("widthIn", this.widthIn);
+        return (this.flagWidth = false);
       }
-      return this.flagWidth = true
+      return (this.flagWidth = true);
       // console.log(e.target.value.length);
     },
-    toggle(){
-      return this.flagColor = !this.flagColor
+    toggle() {
+      return (this.flagColor = !this.flagColor);
     },
-    toggle2(){
-      return this.flagColor2 = !this.flagColor2
+    toggle2() {
+      return (this.flagColor2 = !this.flagColor2);
     },
   },
 };
 </script>
 <style lang="css" scoped>
 :root {
-  --charcoal-grey: #36454F;
+  --charcoal-grey: #36454f;
 }
 .test {
   position: absolute;
@@ -110,10 +146,10 @@ export default {
   height: 60px;
   margin-top: 32px;
 }
-.colorClick .hugh  {
-  color:  #2540ff
+.colorClick .hugh {
+  color: #2540ff;
 }
-.colorClick .border-around{
+.colorClick .border-around {
   width: 60px;
   height: 60px;
   border: solid 2px #2540ff !important;
@@ -127,14 +163,14 @@ export default {
   margin: 8px 1px 0 0;
   border-bottom: 1px solid silver;
   padding-bottom: 8px;
-  outline:none;
+  outline: none;
 }
-.input-test-large{
+.input-test-large {
   width: 90px;
   margin: 8px 1px 0 0;
   border-bottom: 1px solid silver;
   padding-bottom: 8px;
-  outline:none;
+  outline: none;
 }
 .column-test {
   display: flex;
@@ -144,11 +180,11 @@ export default {
   margin-left: 16px;
   margin-right: 8px;
 }
-.hours{
+.hours {
   width: 59px;
   height: 17px;
   margin-top: 30px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -157,8 +193,8 @@ export default {
   letter-spacing: normal;
   color: var(--charcoal-grey);
 }
-.hugh{
-  font-family: 'Roboto';
+.hugh {
+  font-family: "Roboto";
   font-size: 13px;
   font-weight: bold;
   font-stretch: condensed;
@@ -169,8 +205,8 @@ export default {
   color: var(--charcoal-grey);
 }
 
-.input-bold{
-  font-family: 'Roboto';
+.input-bold {
+  font-family: "Roboto";
   font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
@@ -179,10 +215,10 @@ export default {
   letter-spacing: normal;
   color: var(--charcoal-grey);
 }
-.inside{
+.inside {
   margin: 24px 0px 62px 20px !important;
 }
-.avatar{
+.avatar {
   border-radius: 50%;
 }
 </style>
