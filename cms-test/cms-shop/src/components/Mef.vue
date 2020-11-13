@@ -80,9 +80,9 @@
             class="input-test input-bold"
           />
           <input
-            @click="toggle"
+            @click="toggle()"
             v-bind:style="{ width: widthIn + 'px' }"
-            @keypress="inputLarge($event)"
+            @keydown="inputLarge($event)"
             maxlength="20"
             v-else
             width="widthIn"
@@ -116,6 +116,7 @@ export default {
         console.log("widthIn", this.widthIn);
         return (this.flagWidth = false);
       }
+      this.widthIn = 55;
       return (this.flagWidth = true);
       // console.log(e.target.value.length);
     },
