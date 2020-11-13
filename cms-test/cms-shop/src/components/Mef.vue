@@ -81,6 +81,7 @@
           />
           <input
             @click="toggle"
+            v-bind:style="{ width: widthIn + 'px' }"
             @keypress="inputLarge($event)"
             maxlength="20"
             v-else
@@ -88,7 +89,7 @@
             placeholder="10000"
             value="10000"
             type="number"
-            class="input-test-large input-bold"
+            class="input-test input-bold"
           />
         </div>
         <p class="hours">hours old</p>
@@ -103,7 +104,7 @@ export default {
     return {
       flagWidth: true,
       flagWidth2: true,
-      widthIn: null,
+      widthIn: 55,
       flagColor: false,
       flagColor2: false,
     };
@@ -111,7 +112,7 @@ export default {
   methods: {
     inputLarge(e) {
       if (e.target.value.length > 5 && e.target.value.length < 40) {
-        this.widthIn = e.target.value.length + 5 + "px";
+        this.widthIn +=  8;
         console.log("widthIn", this.widthIn);
         return (this.flagWidth = false);
       }
