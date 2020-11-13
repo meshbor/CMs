@@ -4,7 +4,7 @@
       <!-- 1 -->
     <div class="row">
       <div width="55px" height="55px">
-       <div class="border-around">
+      <div class="border-around">
         <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
         </div>
       </div>
@@ -17,7 +17,7 @@
     <!-- 2 -->
     <div class="row">
       <div width="55px" height="55px"> 
-         <div class="border-around">
+        <div class="border-around">
         <img class="avatar" src="../assets/hugh.jpg" alt="Hugh" />
         </div>
       </div>
@@ -106,7 +106,6 @@ export default {
   transform: translate(-50%, -50%);
 }
 .row {
-  /* justify-content: start; */
   margin-left: auto;
   height: 60px;
   margin-top: 32px;
@@ -131,7 +130,7 @@ export default {
   outline:none;
 }
 .input-test-large{
-  width: 80px;
+  width: 90px;
   margin: 8px 1px 0 0;
   border-bottom: 1px solid silver;
   padding-bottom: 8px;
@@ -169,9 +168,7 @@ export default {
   text-align: center;
   color: var(--charcoal-grey);
 }
-/* .hugh:hover{
-  color: #2540ff
-} */
+
 .input-bold{
   font-family: 'Roboto';
   font-size: 14px;
@@ -184,17 +181,8 @@ export default {
 }
 .inside{
   margin: 24px 0px 62px 20px !important;
-  /* justify-content: space-between; */
 }
 .avatar{
   border-radius: 50%;
-}
-.avatar:focus{
-  /* border-radius: 50%; */
-  border-left:95%;
-  border-right: 50%;
-  border-bottom: 50%;
-  border-top:50%;
-  border: solid 2px #2540ff
 }
 </style>
