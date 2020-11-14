@@ -70,24 +70,26 @@
         <div class="column-test">
           <label class="hugh">HUGH IS</label>
           <input
-            @click="toggle"
-            @keypress="inputLarge($event)"
-            maxlength="20"
             v-if="flagWidth"
+            @click="toggle"
+            @keypress="inputLarge($event),toLocalStr($event) "
+            maxlength="20"
+            width="widthIn"
             placeholder="10000"
+            v-model.number="valueINp"
             value="10000"
             type="number"
             class="input-test input-bold"
           />
           <input
+            v-else
             @click="toggle()"
             v-bind:style="{ width: widthIn + 'px' }"
-            @keydown="inputLarge($event)"
+            @keypress="inputLarge($event),toLocalStr($event) "
+            v-model.number="valueINp"
             maxlength="20"
-            v-else
             width="widthIn"
             placeholder="10000"
-            value="10000"
             type="number"
             class="input-test input-bold"
           />
@@ -107,12 +109,13 @@ export default {
       widthIn: 55,
       flagColor: false,
       flagColor2: false,
+      valueINp: '',
     };
   },
   methods: {
     inputLarge(e) {
       if (e.target.value.length > 5 && e.target.value.length < 40) {
-        this.widthIn +=  8;
+        this.widthIn += 8;
         console.log("widthIn", this.widthIn);
         return (this.flagWidth = false);
       }
@@ -125,6 +128,28 @@ export default {
     },
     toggle2() {
       return (this.flagColor2 = !this.flagColor2);
+    },
+    toLocalStr(e){
+      this.valueINp = e.target.value.toLocaleString('ru-RU')
+      console.log('this.valueINp',this.valueINp);
+    },
+    spacing(e) {
+      let regexpr = /[0-9]/g;
+      let trueNum = e.target.value.match(regexpr);
+      console.log('trueNum>>',trueNum);
+      if (trueNum) {
+        let trueInp = "";
+        trueNum.forEach((ch, ind) => {
+          trueInp += ch;
+          console.log('trueInp>>',trueInp);
+          let indexChar = ind + 1;
+          if (indexChar%3 == 0) {
+            trueInp += " ";
+          }
+        });
+        console.log('trueInp>>2',trueInp);
+      return this.valueINp = trueInp;
+      }
     },
   },
 };
@@ -222,5 +247,12 @@ export default {
 }
 .avatar {
   border-radius: 50%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type='number'] {
+    -moz-appearance: textfield;
 }
 </style>
